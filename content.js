@@ -56,17 +56,50 @@ html.cinemorph-on ytd-mini-guide-renderer,
 html.cinemorph-on #masthead-ad,
 html.cinemorph-on ytd-banner-promo-renderer { display: none !important; }
 
-html.cinemorph-on ytd-page-manager#page-manager { margin-left: 0 !important; }
+html.cinemorph-on ytd-page-manager#page-manager,
+html.cinemorph-on ytd-browse,
+html.cinemorph-on ytd-two-column-browse-results-renderer,
+html.cinemorph-on ytd-rich-grid-renderer,
+html.cinemorph-on ytd-rich-grid-renderer #contents {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+html.cinemorph-on body { overflow-x: hidden !important; }
+html.cinemorph-on ytd-app {
+  --app-drawer-width: 0px !important;
+  --ytd-mini-guide-width: 0px !important;
+}
+html.cinemorph-on ytd-app[guide-persistent-and-visible] ytd-page-manager.ytd-app,
+html.cinemorph-on ytd-app[mini-guide-visible] ytd-page-manager.ytd-app,
+html.cinemorph-on #page-manager.ytd-app {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  width: 100vw !important;
+}
+html.cinemorph-on ytd-rich-grid-renderer {
+  --ytd-rich-grid-content-max-width: 100% !important;
+  --ytd-rich-grid-gutter-margin: 0px !important;
+  --ytd-rich-grid-item-margin: 0px !important;
+  box-sizing: border-box !important;
+}
 html.cinemorph-on #contentContainer.tp-yt-app-drawer { --app-drawer-width: 0 !important; }
 
 /* ---- YouTube-branded cinematic top bar ---- */
 html.cinemorph-on #masthead-container ytd-masthead {
   background: transparent !important;
   border: 0 !important;
-  height: 72px !important;
-  padding: 0 4.2vw !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 max(20px, 3vw) !important;
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
 }
+html.cinemorph-on ytd-masthead .ytd-masthead,
+html.cinemorph-on ytd-masthead #end { max-height: 44px !important; }
 html.cinemorph-on #masthead-container {
+  height: 44px !important;
   background: linear-gradient(180deg, rgba(5,5,5,.98) 0%, rgba(5,5,5,.82) 62%, rgba(5,5,5,0)) !important;
   border: 0 !important;
   box-shadow: none !important;
@@ -80,13 +113,18 @@ html.cinemorph-on ytd-topbar-logo-renderer svg {
   opacity: 1 !important;
 }
 html.cinemorph-on ytd-topbar-logo-renderer {
-  width: 104px !important;
-  min-width: 104px !important;
+  width: 96px !important;
+  min-width: 96px !important;
+}
+html.cinemorph-on ytd-masthead #start {
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+  width: auto !important;
 }
 #cm-nav {
-  display: flex; align-items: center; gap: 22px;
-  margin-left: 28px; font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px; white-space: nowrap;
+  display: flex; align-items: center; gap: 20px;
+  margin-left: 36px; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px; white-space: nowrap;
 }
 #cm-nav a { color: #e5e5e5; text-decoration: none; opacity: .82; }
 #cm-nav a:first-child { color: #fff; font-weight: 700; opacity: 1; }
@@ -95,9 +133,14 @@ html.cinemorph-on ytd-topbar-logo-renderer {
 
 /* ---- Netflix-style search using YouTube's real search ---- */
 html.cinemorph-on ytd-masthead #center {
-  flex: 0 1 430px !important;
+  flex: 0 1 420px !important;
+  min-width: 180px !important;
   margin-left: auto !important;
-  margin-right: 22px !important;
+  margin-right: 18px !important;
+}
+html.cinemorph-on ytd-masthead #end {
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
 }
 html.cinemorph-on ytd-searchbox,
 html.cinemorph-on ytd-searchbox #container,
@@ -134,9 +177,11 @@ html.cinemorph-on yt-searchbox-dropdown {
 #cm-billboard {
   position: relative;
   height: 78vh;
-  min-height: 520px;
-  margin: -68px 0 8px -24px;
-  width: calc(100% + 48px);
+  min-height: 480px;
+  margin: -44px 0 16px 0;
+  width: 100%;
+  left: auto;
+  transform: none;
   color: #fff;
   display: flex;
   align-items: center;
@@ -184,30 +229,58 @@ html.cinemorph-on yt-searchbox-dropdown {
 }
 
 /* ---- Rows ---- */
-html.cinemorph-on ytd-rich-grid-renderer #contents { padding: 0 !important; }
+html.cinemorph-on ytd-rich-grid-renderer #contents.ytd-rich-grid-renderer {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  column-gap: clamp(16px, 1.4vw, 26px) !important;
+  row-gap: 44px !important;
+  padding: 18px 4.2vw 56px !important;
+  box-sizing: border-box !important;
+}
 html.cinemorph-on ytd-rich-grid-row #contents {
   display: flex !important;
   flex-wrap: nowrap !important;
-  gap: 10px !important;
+  column-gap: clamp(16px, 1.4vw, 26px) !important;
+  row-gap: 0 !important;
   overflow-x: auto !important;
-  overflow-y: hidden !important;
-  padding: 8px 4.2vw 42px !important;
+  overflow-y: visible !important;
+  padding: 18px 4.2vw 56px !important;
   scrollbar-width: none;
   scroll-snap-type: x proximity;
 }
 html.cinemorph-on ytd-rich-grid-row #contents::-webkit-scrollbar { display: none; }
 html.cinemorph-on ytd-rich-grid-row {
   margin: 0 !important;
-  --ytd-rich-grid-items-per-row: 6 !important;
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
 }
+html.cinemorph-on ytd-rich-section-renderer,
+html.cinemorph-on ytd-rich-shelf-renderer,
+html.cinemorph-on ytd-rich-item-renderer[is-slim-media],
+html.cinemorph-on ytd-rich-item-renderer:has(ytd-ad-slot-renderer) { display: none !important; }
 html.cinemorph-on ytd-rich-item-renderer {
-  flex: 0 0 auto !important;
-  width: clamp(240px, 18.5vw, 310px) !important;
-  max-width: 310px !important;
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 240px !important;
+  max-width: none !important;
   margin: 0 !important;
   transition: transform .28s ease, z-index 0s;
   scroll-snap-align: start;
+  box-sizing: border-box !important;
 }
+
+/* Horizontal shelf rows keep fixed poster sizes so partial rows don't stretch */
+html.cinemorph-on ytd-rich-grid-row ytd-rich-item-renderer {
+  flex: 0 0 auto !important;
+  width: clamp(260px, 19vw, 360px) !important;
+  min-width: 0 !important;
+  max-width: 360px !important;
+}
+
 html.cinemorph-on ytd-rich-item-renderer:hover {
   transform: scale(1.08);
   z-index: 30;
@@ -237,8 +310,8 @@ html.cinemorph-on #video-title {
 
 .cm-row-title {
   font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(19px, 1.55vw, 25px); font-weight: 700; color: #e5e5e5;
-  margin: 6px 0 0; padding: 0 4.2vw;
+  font-size: clamp(18px, 1.45vw, 24px); font-weight: 700; color: #e5e5e5;
+  margin: 22px 0 0; padding: 0 4.2vw;
   letter-spacing: 0;
 }
 
@@ -295,9 +368,15 @@ html.cinemorph-on.cm-channel ytd-rich-item-renderer {
 }
 
 /* ---- Watch page: cinema mode ---- */
+html.cinemorph-on.cm-watch,
+html.cinemorph-on.cm-watch body,
+html.cinemorph-on.cm-watch ytd-app,
+html.cinemorph-on.cm-watch ytd-watch-flexy {
+  overflow: hidden !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+}
 html.cinemorph-on.cm-watch ytd-watch-flexy #secondary,
-html.cinemorph-on.cm-watch ytd-watch-flexy #below,
-html.cinemorph-on.cm-watch ytd-watch-metadata,
 html.cinemorph-on.cm-watch #comments,
 html.cinemorph-on.cm-watch #chat,
 html.cinemorph-on.cm-watch ytd-merch-shelf-renderer { display: none !important; }
@@ -318,9 +397,19 @@ html.cinemorph-on.cm-watch video.html5-main-video {
   height: 100vh !important;
 }
 html.cinemorph-on.cm-watch video.html5-main-video {
-  width: 100vw !important; left: 0 !important; top: 0 !important; object-fit: cover;
+  width: 100% !important; left: 0 !important; top: 0 !important; object-fit: contain !important;
+  background: #000;
 }
 html.cinemorph-on.cm-watch ytd-watch-flexy[flexy] #columns { padding: 0 !important; }
+html.cinemorph-on.cm-watch ytd-watch-flexy #below,
+html.cinemorph-on.cm-watch ytd-watch-metadata,
+html.cinemorph-on.cm-watch #bottom-row,
+html.cinemorph-on.cm-watch #top-row,
+html.cinemorph-on.cm-watch #description,
+html.cinemorph-on.cm-watch ytd-live-chat-frame,
+html.cinemorph-on.cm-watch #related,
+html.cinemorph-on.cm-watch ytd-watch-flexy #playlist { display: none !important; }
+
 html.cinemorph-on.cm-watch .ytp-chrome-bottom { width: calc(100vw - 48px) !important; left: 24px !important; }
 html.cinemorph-on.cm-watch .ytp-gradient-bottom { height: 220px !important; }
 html.cinemorph-on.cm-watch .ytp-play-progress, html.cinemorph-on .ytp-swatch-background-color {
