@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        width: 288px; margin: 0; padding: 18px;
+        font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+        background: #0b0b0c; color: #f4f4f5;
+      }
+      h1 { margin: 0 0 2px; font-size: 16px; letter-spacing: -0.02em; }
+      p.sub { margin: 0 0 16px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #8b8b90; }
+      .row { display: flex; align-items: center; justify-content: space-between; margin: 14px 0; font-size: 13px; }
+      input[type="range"] { width: 130px; accent-color: var(--accent, #e50914); }
+      input[type="color"] { width: 34px; height: 24px; border: none; background: none; padding: 0; }
+      .switch { position: relative; width: 44px; height: 24px; }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .slider { position: absolute; inset: 0; background: #2a2a2e; border-radius: 999px; cursor: pointer; transition: .2s; }
+      .slider::before { content: ""; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s; }
+      input:checked + .slider { background: var(--accent, #e50914); }
+      input:checked + .slider::before { transform: translateX(20px); }
+      button { width: 100%; margin-top: 8px; padding: 9px; border: 1px solid #2a2a2e; background: transparent; color: #d4d4d8; border-radius: 10px; font-size: 12px; cursor: pointer; }
+      button:hover { background: #17171a; }
+    </style>
+  </head>
+  <body>
+    <h1>Cinemorph</h1>
+    <p class="sub">Restyle this page</p>
+
+    <div class="row">
+      <span>Enabled</span>
+      <label class="switch"><input type="checkbox" id="enabled" /><span class="slider"></span></label>
+    </div>
+    <div class="row"><span>Accent</span><input type="color" id="accent" value="#e50914" /></div>
+    <div class="row"><span>Contrast</span><input type="range" id="contrast" min="0" max="100" /></div>
+    <div class="row"><span>Reading width</span><input type="range" id="width" min="0" max="1200" step="40" /></div>
+    <div class="row">
+      <span>Rounded corners</span>
+      <label class="switch"><input type="checkbox" id="rounded" /><span class="slider"></span></label>
+    </div>
+    <button id="reset">Reset to defaults</button>
+    <script src="popup.js"></script>
+  </body>
+</html>
